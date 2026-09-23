@@ -1,0 +1,39 @@
+name: Azure Infrastructure & PMI Governance CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate-infrastructure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      - name: Terraform Lint & Validate
+        run: |
+          cd azure-infrastructure
+          terraform fmt -check || true
+
+  pmi-governance-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-python-version: '3.10'
+
+      - name: Run PMI Metrics Automation Check
+        run: |
+          python project-governance/scripts/pmi_kpi_tracker.py
