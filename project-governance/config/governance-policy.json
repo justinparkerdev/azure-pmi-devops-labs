@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "projectName": "azure-pmi-devops-labs",
+  "version": "1.2.0",
+  "standards": {
+    "pmpFramework": {
+      "reference": "https://dev.to/masonbrooksnet/navigating-enterprise-project-management-real-world-scenarios-and-pmp-study-insights-2hj2",
+      "sprintDurationDays": 14,
+      "riskThreshold": "Medium"
+    },
+    "azureArchitecture": {
+      "reference": "https://telegra.ph/AB-100-Exam-Value-Trends-and-Architecture-Prep-Guide-09-01",
+      "allowedRegions": ["eastus", "westeurope"],
+      "enforceTagging": true
+    },
+    "teamsGovernance": {
+      "reference": "https://telegra.ph/MS-700-Exam-Value-Trends-and-Prep-Guide-09-01",
+      "externalSharing": "Restricted"
+    }
+  }
+}
